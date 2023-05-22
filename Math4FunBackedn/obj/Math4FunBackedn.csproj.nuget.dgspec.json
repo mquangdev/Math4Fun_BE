@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\University\\Đồ án 1\\Backend\\Math4FunBackedn\\Math4FunBackedn\\Math4FunBackedn.csproj": {}
+    "D:\\University\\Do_An_1\\Math4Fun_BE\\Math4FunBackedn\\Math4FunBackedn.csproj": {}
   },
   "projects": {
-    "D:\\University\\Đồ án 1\\Backend\\Math4FunBackedn\\Math4FunBackedn\\Math4FunBackedn.csproj": {
+    "D:\\University\\Do_An_1\\Math4Fun_BE\\Math4FunBackedn\\Math4FunBackedn.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\University\\Đồ án 1\\Backend\\Math4FunBackedn\\Math4FunBackedn\\Math4FunBackedn.csproj",
+        "projectUniqueName": "D:\\University\\Do_An_1\\Math4Fun_BE\\Math4FunBackedn\\Math4FunBackedn.csproj",
         "projectName": "Math4FunBackedn",
-        "projectPath": "D:\\University\\Đồ án 1\\Backend\\Math4FunBackedn\\Math4FunBackedn\\Math4FunBackedn.csproj",
+        "projectPath": "D:\\University\\Do_An_1\\Math4Fun_BE\\Math4FunBackedn\\Math4FunBackedn.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\University\\Đồ án 1\\Backend\\Math4FunBackedn\\Math4FunBackedn\\obj\\",
+        "outputPath": "D:\\University\\Do_An_1\\Math4Fun_BE\\Math4FunBackedn\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,36 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[10.0.1, )"
+            },
+            "Microsoft.AspNetCore.JsonPatch": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[6.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
