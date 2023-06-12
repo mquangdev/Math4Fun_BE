@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uP5lR394iz2Dqmzvm4ra2+5N6OHGMpMTl8cqwXAhLko=",
+  "Hash": "S7Pi/nxAXaw6LK2ROFZJnTAz+jvHhmlyH7wdPZiOiAw=",
   "Source": "Math4FunBackedn",
   "BasePath": "_content/Math4FunBackedn",
   "Mode": "Default",
@@ -15,5 +15,23 @@
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "D:\\University\\Do_An_1\\Math4Fun_BE\\Math4FunBackedn\\wwwroot\\Storage\\ClassDiagram_638221750140907425_ORIGIN.png",
+      "SourceId": "Math4FunBackedn",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\University\\Do_An_1\\Math4Fun_BE\\Math4FunBackedn\\wwwroot\\",
+      "BasePath": "_content/Math4FunBackedn",
+      "RelativePath": "Storage/ClassDiagram_638221750140907425_ORIGIN.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Storage\\ClassDiagram_638221750140907425_ORIGIN.png"
+    }
+  ]
 }
