@@ -12,6 +12,13 @@ namespace Math4FunBackedn.Repositories.UserRepo
             _context = iContext;
         }
 
+        public async Task<List<User>> GetAll()
+        {
+            var list = new List<User>();
+            list = _context.User.ToList<User>();
+            return list;
+        }
+
         public async Task<User> GetById(Guid id)
         {
             var user = await _context.User.FirstOrDefaultAsync(e => e.Id == id);

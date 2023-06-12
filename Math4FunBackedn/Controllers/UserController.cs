@@ -24,5 +24,18 @@ namespace Math4FunBackedn.Controllers
                ex.Message);
             } 
         }
+        [HttpGet("User/GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            try
+            {
+                return Ok(await _UserRepo.GetAll());
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+               ex);
+            }
+        }
     }
 }

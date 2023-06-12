@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Math4FunBackedn.Entities
 {
@@ -12,5 +13,8 @@ namespace Math4FunBackedn.Entities
         public DateTime? Dob { get; set; }
         public string? Avatar { get; set; }
         public string? Email { get; set; }
+        public double? TotalExp { get; set; }
+        public int? Role { get; set; }
+        public ICollection<Users_Courses>? Users_Courses { get; set; }
     }
 }

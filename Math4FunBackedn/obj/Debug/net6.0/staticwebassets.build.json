@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "pxqqxDBt2UkBjaZtRytPUT9JaDE6FKQ5lD7RUOB5vNU=",
+  "Hash": "uP5lR394iz2Dqmzvm4ra2+5N6OHGMpMTl8cqwXAhLko=",
   "Source": "Math4FunBackedn",
   "BasePath": "_content/Math4FunBackedn",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Math4FunBackedn\\wwwroot",
+      "Source": "Math4FunBackedn",
+      "ContentRoot": "D:\\University\\Do_An_1\\Math4Fun_BE\\Math4FunBackedn\\wwwroot\\",
+      "BasePath": "_content/Math4FunBackedn",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

@@ -25,13 +25,16 @@ namespace Math4FunBackedn.Repositories.AccountRepo
                 Id = newId,
                 Username = iAcc.Username,
                 Password = iAcc.Password,
+                Email = iAcc.Email
             };
             var newUser = new User()
             {
                 Id = newId,
                 Username = iAcc.Username,
                 Dob = iAcc.Dob,
-                Fullname = iAcc.Fullname
+                Fullname = iAcc.Fullname,
+                Email = iAcc.Email,
+                Role = 0
             };
             await _context.Account.AddAsync(newAcc);
             await _context.User.AddAsync(newUser);

@@ -82,3 +82,7 @@ D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\refint\Math4F
 D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.pdb
 D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.genruntimeconfig.cache
 D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\ref\Math4FunBackedn.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\MailKit.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\MimeKit.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\BouncyCastle.Crypto.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Math4FunBackedn.staticwebassets.runtime.json

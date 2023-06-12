@@ -1,6 +1,5 @@
 ﻿using Math4FunBackedn.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Principal;
 
 namespace Math4FunBackedn.DBContext
 {
@@ -13,6 +12,12 @@ namespace Math4FunBackedn.DBContext
         #region DBset
         public DbSet<Account> Account { get; set; }
         public DbSet<User> User { get; set; }
+        public DbSet<Course> Course { get; set; }
+        public DbSet<Chapter> Chapter { get; set; }
+        public DbSet<Lesson> Lesson { get; set; }
+        public DbSet<Question> Question { get; set; }
+        public DbSet<Answer> Answer { get; set; }
+        public DbSet<Users_Courses> Users_Courses { get; set; }
         #endregion
     }
 }
