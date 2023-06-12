@@ -66,14 +66,8 @@ namespace Math4FunBackedn.Repositories.CourseRepo
             {
                 throw new Exception("Không tìm thấy người dùng hoặc khóa học");
             }
-            var listUC = await _context.Users_Courses.Where(uc => uc.UserId == iRegister.UserId).ToListAsync();
-            listUC.ForEach(uc =>
-            {
-                if(uc.CourseId == iRegister.CourseId)
-                {
-                    throw new Exception("Người dùng đã đăng ký khóa học này");
-                }
-            });
+            var listUC = await _context.Users_Courses.Where(uc => uc.UserId == iRegister.UserId&& uc.CourseId==iRegister.CourseId).ToListAsync();
+            if (!listUC.Any()) throw new Exception("Người dùng đã đăng ký khóa học");
             if(course.TotalMember == null)
             {
                 course.TotalMember = 0;

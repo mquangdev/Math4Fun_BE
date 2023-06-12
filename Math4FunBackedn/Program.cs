@@ -29,7 +29,6 @@ builder.Services.AddScoped(typeof(IChapterRepository), typeof(ChapterRepository)
 builder.Services.AddScoped(typeof(ILessonRepository), typeof(LessonRepository));
 builder.Services.AddScoped(typeof(IQuestionRepository), typeof(QuestionRepository));
 builder.Services.AddScoped(typeof(IAnswerRepository), typeof(AnswerRepository));
-
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyDbContext>(options =>
 {
