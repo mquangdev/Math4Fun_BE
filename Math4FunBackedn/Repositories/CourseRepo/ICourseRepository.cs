@@ -9,8 +9,9 @@ namespace Math4FunBackedn.Repositories.CourseRepo
         Task<List<Course>> GetAllCourse();
         Task<int> RegisterCourse(RegisterCourseDTO iRegister);
         Task<List<Course>> GetCourseByUserId(Guid iUserId);
-        Task<Course> GetDetailCourse(Guid userId, Guid courseId);
-        Task<int> UpdateCourse(Guid courseId);
-
+        Task<Course> GetDetailCourseByUserId(Guid userId, Guid courseId);
+        Task<int> UpdateCourse(UpdateCourseDTO iUpdate);
+        Task<Course> DetailCourse(Guid courseId);
+        Task<int> Delete(Guid courseId);
     }
 }

@@ -31,6 +31,9 @@ namespace Math4FunBackedn.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("text");
 
+                    b.Property<string>("Otp")
+                        .HasColumnType("text");
+
                     b.Property<string>("Password")
                         .HasColumnType("text");
 
@@ -48,11 +51,11 @@ namespace Math4FunBackedn.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<bool?>("IsCorrect")
-                        .HasColumnType("boolean");
-
                     b.Property<Guid>("QuestionId")
                         .HasColumnType("uuid");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("text");
 
                     b.Property<string>("Value")
                         .HasColumnType("text");
@@ -72,6 +75,12 @@ namespace Math4FunBackedn.Migrations
 
                     b.Property<Guid>("CourseId")
                         .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int?>("Index")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Instruction")
                         .HasColumnType("text");
@@ -124,6 +133,9 @@ namespace Math4FunBackedn.Migrations
                     b.Property<Guid>("ChapterId")
                         .HasColumnType("uuid");
 
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<int?>("ExpGained")
                         .HasColumnType("integer");
 
@@ -152,11 +164,17 @@ namespace Math4FunBackedn.Migrations
                     b.Property<Guid>("LessonId")
                         .HasColumnType("uuid");
 
+                    b.Property<bool?>("Status")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Text")
                         .HasColumnType("text");
 
                     b.Property<int?>("Type")
                         .HasColumnType("integer");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -175,7 +193,7 @@ namespace Math4FunBackedn.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("Dob")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Email")
                         .HasColumnType("text");
@@ -190,6 +208,9 @@ namespace Math4FunBackedn.Migrations
                         .HasColumnType("integer");
 
                     b.Property<double?>("TotalExp")
+                        .HasColumnType("double precision");
+
+                    b.Property<double?>("TotalGem")
                         .HasColumnType("double precision");
 
                     b.Property<string>("Username")

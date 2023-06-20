@@ -47,8 +47,8 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
-        [HttpGet("Course/GetCourseByUserId")]
-        public async Task<IActionResult> GetCourseByUserId(Guid UserId)
+        [HttpGet("Course/GetAllCourseByUserId")]
+        public async Task<IActionResult> GetAllCourseByUserId(Guid UserId)
         {
             try
             {
@@ -59,17 +59,54 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
-        [HttpGet("Course/GetDetailCourse")]
-        public async Task<IActionResult> GetDetailCourse(Guid userId, Guid courseId)
+        [HttpGet("Course/GetDetailCourseByUserId")]
+        public async Task<IActionResult> GetDetailCourseByUserId(Guid userId, Guid courseId)
         {
             try
             {
-                return Ok(await _courseRepository.GetDetailCourse(userId, courseId));
+                return Ok(await _courseRepository.GetDetailCourseByUserId(userId, courseId));
             }
             catch(Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
 
+            }
+        }
+        [HttpGet("Course/GetDetailCourse")]
+        public async Task<IActionResult> GetDetailCourse(Guid courseId)
+        {
+            try
+            {
+                return Ok(await _courseRepository.DetailCourse(courseId));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+
+            }
+        }
+        [HttpPost("Course/Update")]
+        public async Task<IActionResult> UpdateCourse([FromBody] UpdateCourseDTO iUpdate)
+        {
+            try
+            {
+                return Ok(await _courseRepository.UpdateCourse(iUpdate));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+        [HttpDelete("Course/Delete")]
+        public async Task<IActionResult> DeleteCourse(Guid courseId)
+        {
+            try
+            {
+                return Ok(await _courseRepository.Delete(courseId));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
     }

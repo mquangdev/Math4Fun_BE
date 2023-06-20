@@ -14,6 +14,7 @@ namespace Math4FunBackedn.Entities
         public string? Avatar { get; set; }
         public string? Email { get; set; }
         public double? TotalExp { get; set; }
+        public double? TotalGem { get; set; }
         public int? Role { get; set; }
         public ICollection<Users_Courses>? Users_Courses { get; set; }
     }

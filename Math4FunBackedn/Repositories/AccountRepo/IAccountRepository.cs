@@ -7,5 +7,6 @@ namespace Math4FunBackedn.Repositories.AccountRepo
     {
         Task<int> Create(CreateAccountDTO iAcc);
         Task<User> SignIn(SignInDTO iAcc);
+        Task<int> ChangePw(ChangePwDTO iChangePw);
     }
 }

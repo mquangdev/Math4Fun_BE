@@ -12,6 +12,16 @@ namespace Math4FunBackedn.Repositories.AccountRepo
         {
             _context = iContext;
         }
+
+        public async Task<int> ChangePw(ChangePwDTO iChangePw)
+        {
+            var acc = await _context.Account.FirstOrDefaultAsync(a => a.Email == iChangePw.email);
+            if(acc == null) throw new Exception("Tài khoản không đúng");
+            acc.Password = iChangePw.password;
+            await _context.SaveChangesAsync();
+            return 1;
+        }
+
         public async Task<int> Create(CreateAccountDTO iAcc)
         {
             var checkAcc = await _context.Account.FirstOrDefaultAsync(e => e.Username == iAcc.Username);

@@ -27,7 +27,7 @@ namespace Math4FunBackedn.Settings
 
                 // create message
                 var email = new MimeMessage();
-                email.Sender = MailboxAddress.Parse(Options.Sender_EMail);
+                email.Sender = MailboxAddress.Parse("vuhuydung2002@gmail.com");
                 if (!string.IsNullOrEmpty(Options.Sender_Name))
                     email.Sender.Name = Options.Sender_Name;
                 email.From.Add(email.Sender);

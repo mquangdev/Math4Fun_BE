@@ -10,6 +10,7 @@ namespace Math4FunBackedn.Entities
         public string? Title { get; set; }
         public bool? Status { get; set; }
         public int? ExpGained { get; set; }
+        public DateTime? CreatedDate { get; set; }
         [ForeignKey("ChapterId")]
         public Guid ChapterId { get; set; }
         public Chapter? Chapter { get; set; }

@@ -7,8 +7,9 @@ namespace Math4FunBackedn.Entities
     {
         [Key]
         public Guid Id { get; set; }
+        public string? Text { get; set; }
         public string? Value { get; set; }
-        public bool? IsCorrect { get; set; }
+       // public bool? IsCorrect { get; set; }
         [ForeignKey("QuestionId")]
         public Guid QuestionId { get; set; }
         public Question? Question { get; set; }
