@@ -81,7 +81,11 @@ namespace Math4FunBackedn.Repositories.CourseRepo
             }
             var userCourse = user.Users_Courses.FirstOrDefault(uc => uc.CourseId == courseId);
             var course = userCourse.Course;
-            course.ChapterList.OrderBy(chapter => chapter.CreatedDate);
+            course.ChapterList = course.ChapterList.OrderBy(chapter => chapter.CreatedDate).ToList();
+            foreach (var chapter in course.ChapterList)
+            {
+                chapter.LessonList = chapter.LessonList.OrderBy(l => l.Index).ToList();
+            }
             return course;
         }
         public async Task<int> RegisterCourse(RegisterCourseDTO iRegister)

@@ -44,7 +44,8 @@ namespace Math4FunBackedn.Repositories.AccountRepo
                 Dob = iAcc.Dob,
                 Fullname = iAcc.Fullname,
                 Email = iAcc.Email,
-                Role = 0
+                Role = 0,
+                DateJoin = DateTime.Now
             };
             await _context.Account.AddAsync(newAcc);
             await _context.User.AddAsync(newUser);

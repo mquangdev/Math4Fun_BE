@@ -60,5 +60,18 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
+        [HttpPost("Lesson/UpdateStatusLessonByUser")]
+        public async Task<IActionResult> UpdateStatusLessonByUser([FromBody] UserUpdateLessonDTO iUpdate)
+        {
+            try
+            {
+                return Ok(await _lessonRepository.UpdateLessonByUser(iUpdate));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex);
+            }
+        }
+
     }
 }

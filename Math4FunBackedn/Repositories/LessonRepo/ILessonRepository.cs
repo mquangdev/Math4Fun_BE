@@ -9,5 +9,6 @@ namespace Math4FunBackedn.Repositories.LessonRepo
         Task<int> DeleteLesson(Guid lessonId);
         Task<int> Update(UpdateLessonDTO iUpdate);
         Task<Lesson> Detail(Guid id);
+        Task<int> UpdateLessonByUser(UserUpdateLessonDTO iUpdate);
     }
 }

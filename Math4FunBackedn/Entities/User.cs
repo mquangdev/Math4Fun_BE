@@ -16,6 +16,7 @@ namespace Math4FunBackedn.Entities
         public double? TotalExp { get; set; }
         public double? TotalGem { get; set; }
         public int? Role { get; set; }
+        public DateTime? DateJoin { get; set; }
         public ICollection<Users_Courses>? Users_Courses { get; set; }
     }
 }

@@ -7,5 +7,6 @@ namespace Math4FunBackedn.DTO
         public string? Title { get; set; }
         public int? ExpGained { get; set; }
         public Guid ChapterId { get; set; }
+        public int? Index { get; set; }
     }
 }

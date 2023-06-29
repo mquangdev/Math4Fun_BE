@@ -6,5 +6,6 @@
         public string? Title { get; set; }
         public string? SubTile { get; set; }
         public string? Instruction { get; set; }
+        public bool? Status { get; set; }
     }
 }

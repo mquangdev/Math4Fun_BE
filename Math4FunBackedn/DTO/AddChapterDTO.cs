@@ -6,5 +6,6 @@
         public string? SubTile { get; set; }
         public string? Instruction { get; set; }
         public Guid CourseId { get; set; }
+        public int? Index { get; set; }
     }
 }

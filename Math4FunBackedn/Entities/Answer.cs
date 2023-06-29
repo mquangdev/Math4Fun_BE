@@ -13,5 +13,5 @@ namespace Math4FunBackedn.Entities
         [ForeignKey("QuestionId")]
         public Guid QuestionId { get; set; }
         public Question? Question { get; set; }
-    }
+    } 
 }

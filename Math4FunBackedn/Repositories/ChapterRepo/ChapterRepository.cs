@@ -45,6 +45,7 @@ namespace Math4FunBackedn.Repositories.ChapterRepo
         public async Task<Chapter> Detail(Guid chapterId)
         {
             var chapter = await _context.Chapter.Include(c => c.LessonList).FirstOrDefaultAsync(c => c.Id == chapterId);
+            chapter.LessonList = chapter.LessonList.OrderBy(l => l.Index).ToList();
             if (chapter == null) throw new Exception("Không tìm thấy chương học này");
             return chapter;
         }

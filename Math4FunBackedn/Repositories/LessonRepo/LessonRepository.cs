@@ -44,7 +44,6 @@ namespace Math4FunBackedn.Repositories.LessonRepo
             var lesson = await _context.Lesson.Include(l => l.QuestionList).FirstOrDefaultAsync(l => l.Id == id);
             if (lesson == null) throw new Exception("Không tìm thấy chương học");
             return lesson;
-
         }
 
         public async  Task<int> Update(UpdateLessonDTO iUpdate)
@@ -53,6 +52,26 @@ namespace Math4FunBackedn.Repositories.LessonRepo
             if (lesson == null) throw new Exception("Không tìm thấy chương học");
             lesson.Title = iUpdate.Title;
             lesson.ExpGained = iUpdate.ExpGained;
+            await _context.SaveChangesAsync();
+            return 1;
+        }
+
+        public async Task<int> UpdateLessonByUser(UserUpdateLessonDTO iUpdate)
+        {
+            var user = await _context.User.Include(u => u.Users_Courses).ThenInclude(uc => uc.Course).ThenInclude(c => c.ChapterList).ThenInclude(chapter => chapter.LessonList).FirstOrDefaultAsync(u => u.Id == iUpdate.UserId);
+            var userCourse = user.Users_Courses.FirstOrDefault(uc => uc.CourseId == iUpdate.CourseId);
+            var course = userCourse.Course;
+            var chapter = course.ChapterList.FirstOrDefault(chapter => chapter.Id == iUpdate.ChapterId);
+            var lesson = chapter.LessonList.FirstOrDefault(lesson => lesson.Id == iUpdate.LessonId);
+            lesson.Status = iUpdate.Status;
+            if(iUpdate.Status == true)
+            {
+                if(user.TotalExp == null)
+                {
+                    user.TotalExp = 0;
+                }
+                user.TotalExp += lesson.ExpGained;
+            }
             await _context.SaveChangesAsync();
             return 1;
         }
