@@ -63,15 +63,28 @@ namespace Math4FunBackedn.Repositories.LessonRepo
             var course = userCourse.Course;
             var chapter = course.ChapterList.FirstOrDefault(chapter => chapter.Id == iUpdate.ChapterId);
             var lesson = chapter.LessonList.FirstOrDefault(lesson => lesson.Id == iUpdate.LessonId);
-            lesson.Status = iUpdate.Status;
-            if(iUpdate.Status == true)
+            if (lesson == null)
             {
-                if(user.TotalExp == null)
+                throw new Exception("Không tìm thấy bài học");
+            }
+            if (iUpdate.Status == true)
+            {
+                if (user.TotalExp == null)
                 {
                     user.TotalExp = 0;
                 }
-                user.TotalExp += lesson.ExpGained;
             }
+            int? expPlus = 0;
+            if(lesson.Status == true)
+            {
+                expPlus = 5;
+            }
+            else
+            {
+                expPlus = lesson.ExpGained;
+            }
+            lesson.Status = iUpdate.Status;
+            user.TotalExp += expPlus;
             await _context.SaveChangesAsync();
             return 1;
         }

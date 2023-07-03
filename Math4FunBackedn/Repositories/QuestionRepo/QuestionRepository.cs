@@ -54,13 +54,35 @@ namespace Math4FunBackedn.Repositories.QuestionRepo
                     }
                 case QuestionType.choosePair:
                     {
+                        var id = Guid.NewGuid();
+                        var newQuestion = new Question()
+                        {
+                            Id = id,
+                            Image = iAdd.Image,
+                            Text = iAdd.Text,
+                            Type = iAdd.Type,
+                            LessonId = iAdd.LessonId
+                        };
+                        var listAnswer = new List<Answer>();
+                        iAdd.AnswerList.ForEach((answer) =>
+                        {
+                            var newAnswer = new Answer()
+                            {
+                                Id = Guid.NewGuid(),
+                                Text = answer.Text,
+                                Value = answer.Value,
+                                QuestionId = id
+                            };
+                            listAnswer.Add(newAnswer);
+                        });
+                        newQuestion.AnswerList = listAnswer;
+                        await _context.Question.AddAsync(newQuestion);
+                        await _context.SaveChangesAsync();
                         break;
                     }
             }
             return 1;
         }
-
-     
         public async Task<Question> DetailQuestion(Guid questionId)
         {
             var question = await _context.Question.Include(q => q.AnswerList).FirstOrDefaultAsync(q => q.Id == questionId);
