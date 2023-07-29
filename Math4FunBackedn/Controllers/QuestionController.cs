@@ -48,5 +48,17 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
+        [HttpPost("Question/Update")]
+        public async Task<IActionResult> UpdateQuestion([FromBody] UpdateQuestionDTO iUpdate)
+        {
+            try
+            {
+                return Ok(await _questionRepository.Update(iUpdate));
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex);
+            }
+        }
     }
 }

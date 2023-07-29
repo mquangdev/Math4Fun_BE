@@ -95,5 +95,41 @@ namespace Math4FunBackedn.Repositories.QuestionRepo
             await _context.SaveChangesAsync();
             return 1;
         }
+
+        public async Task<int> Update(UpdateQuestionDTO iUpdate)
+        {
+            _context.ChangeTracker.Clear();
+            var question = await _context.Question.Include(q => q.AnswerList).FirstOrDefaultAsync(q => q.Id == iUpdate.Id);
+            if (question == null) throw new Exception("Không tìm thấy câu hỏi");
+            question.Text = iUpdate.Text != null ?  iUpdate.Text : question.Text;
+            question.Image = iUpdate.Image != null ?  iUpdate.Image : question.Image;
+            question.Type = iUpdate.Type != null ? iUpdate.Type : question.Type;
+            question.Value = iUpdate.Value != null ? iUpdate.Value : question.Value;
+            // Remove
+            if(question.AnswerList.Count >= 1)
+            {
+                foreach (var answer in question.AnswerList)
+                {
+                    _context.Answer.Remove(answer);
+                }
+            }
+            // Update
+            var listAnswer = new List<Answer>();
+            iUpdate.AnswerList.ForEach((answer) =>
+            {
+                var newAnswer = new Answer()
+                {
+                    Id = Guid.NewGuid(),
+                    Text = answer.Text,
+                    Value = answer.Value,
+                    QuestionId = question.Id,
+                    Question = question
+                };
+                listAnswer.Add(newAnswer);
+            });
+            question.AnswerList = listAnswer;
+            await _context.SaveChangesAsync();
+            return 1;
+        }
     }
 }
