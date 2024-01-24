@@ -6,6 +6,7 @@ namespace Math4FunBackedn.DTO
     {
         public Guid Id { get; set; }
         public string? Text { get; set; }
+        public string? TextBonus { get; set; }
         public string? Image { get; set; }
         public QuestionType? Type { get; set; }
         public string? Value { get; set; }

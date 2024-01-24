@@ -109,5 +109,17 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
+        [HttpGet("Course/LeaveCourseByUser")]
+        public async Task<IActionResult> LeaveCourseByUser(Guid userId, Guid courseId)
+        {
+            try
+            {
+                return Ok(await _courseRepository.LeaveCourseByUser(userId, courseId));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
     }
 }

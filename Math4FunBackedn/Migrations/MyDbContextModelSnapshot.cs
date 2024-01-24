@@ -173,6 +173,9 @@ namespace Math4FunBackedn.Migrations
                     b.Property<string>("Text")
                         .HasColumnType("text");
 
+                    b.Property<string>("TextBonus")
+                        .HasColumnType("text");
+
                     b.Property<int?>("Type")
                         .HasColumnType("integer");
 

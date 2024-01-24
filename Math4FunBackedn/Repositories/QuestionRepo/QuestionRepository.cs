@@ -80,6 +80,51 @@ namespace Math4FunBackedn.Repositories.QuestionRepo
                         await _context.SaveChangesAsync();
                         break;
                     }
+                case QuestionType.chooseToBlank:
+                    {
+                        var id = Guid.NewGuid();
+                        var newQuestion = new Question()
+                        {
+                            Id = id,
+                            Image = iAdd.Image,
+                            Text = iAdd.Text,
+                            TextBonus = iAdd.TextBonus,
+                            Type = iAdd.Type,
+                            LessonId = iAdd.LessonId
+                        };
+                        var listAnswer = new List<Answer>();
+                        iAdd.AnswerList.ForEach((answer) =>
+                        {
+                            var newAnswer = new Answer()
+                            {
+                                Id = Guid.NewGuid(),
+                                Text = answer.Text,
+                                Value = answer.Value,
+                                QuestionId = id
+                            };
+                            listAnswer.Add(newAnswer);
+                        });
+                        newQuestion.AnswerList = listAnswer;
+                        await _context.Question.AddAsync(newQuestion);
+                        await _context.SaveChangesAsync();
+                        break;
+                    }
+                case QuestionType.typeToBlank:
+                    {
+                        var id = Guid.NewGuid();
+                        var newQuestion = new Question()
+                        {
+                            Id = id,
+                            Image = iAdd.Image,
+                            Text = iAdd.Text,
+                            Type = iAdd.Type,
+                            LessonId = iAdd.LessonId,
+                            Value = iAdd.Value
+                        };
+                        await _context.Question.AddAsync(newQuestion);
+                        await _context.SaveChangesAsync();
+                        break;
+                    }
             }
             return 1;
         }
@@ -103,14 +148,16 @@ namespace Math4FunBackedn.Repositories.QuestionRepo
             if (question == null) throw new Exception("Không tìm thấy câu hỏi");
             question.Text = iUpdate.Text != null ?  iUpdate.Text : question.Text;
             question.Image = iUpdate.Image != null ?  iUpdate.Image : question.Image;
-            question.Type = iUpdate.Type != null ? iUpdate.Type : question.Type;
+            //question.Type = iUpdate.Type != null ? iUpdate.Type : question.Type;
             question.Value = iUpdate.Value != null ? iUpdate.Value : question.Value;
             // Remove
             if(question.AnswerList.Count >= 1)
             {
                 foreach (var answer in question.AnswerList)
                 {
-                    _context.Answer.Remove(answer);
+                    if (answer.Id == null) continue;
+                    var answerRemove = await _context.Answer.FindAsync(answer.Id);
+                    _context.Answer.Remove(answerRemove);
                 }
             }
             // Update
@@ -125,6 +172,7 @@ namespace Math4FunBackedn.Repositories.QuestionRepo
                     QuestionId = question.Id,
                     Question = question
                 };
+                _context.Answer.AddAsync(newAnswer);
                 listAnswer.Add(newAnswer);
             });
             question.AnswerList = listAnswer;

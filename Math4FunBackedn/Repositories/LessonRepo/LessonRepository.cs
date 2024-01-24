@@ -22,6 +22,7 @@ namespace Math4FunBackedn.Repositories.LessonRepo
                 Title = iAdd.Title,
                 ExpGained = iAdd.ExpGained,
                 ChapterId = chapter.Id,
+                Index = chapter.LessonList.Count,
                 CreatedDate = DateTime.Now
             };
             chapter.LessonList!.Append(newLesson);

@@ -2,6 +2,7 @@
 using Math4FunBackedn.DTO;
 using Math4FunBackedn.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.InteropServices;
 
 namespace Math4FunBackedn.Repositories.CourseRepo
 {
@@ -84,10 +85,27 @@ namespace Math4FunBackedn.Repositories.CourseRepo
             course.ChapterList = course.ChapterList.OrderBy(chapter => chapter.CreatedDate).ToList();
             foreach (var chapter in course.ChapterList)
             {
-                chapter.LessonList = chapter.LessonList.OrderBy(l => l.Index).ToList();
+                chapter.LessonList = chapter.LessonList.OrderBy(l => l.CreatedDate).ToList();
             }
             return course;
         }
+
+        public async Task<int> LeaveCourseByUser(Guid userId, Guid courseId)
+        {
+            var user = await _context.User.FirstOrDefaultAsync(u => u.Id == userId);
+            var course = await _context.Course.FirstOrDefaultAsync(c => c.Id == courseId);
+            if (user == null || course == null)
+            {
+                throw new Exception("Không tìm thấy người dùng hoặc khóa học");
+            }
+            var user_course = await _context.Users_Courses.FirstOrDefaultAsync(uc => uc.UserId == userId && uc.CourseId == courseId);
+            if(user_course == null) throw new Exception("Bạn chưa đăng kí khóa học này");
+            course.TotalMember--;
+            _context.Users_Courses.Remove(user_course);
+            await _context.SaveChangesAsync();
+            return 1;
+        }
+
         public async Task<int> RegisterCourse(RegisterCourseDTO iRegister)
         {
             var user = await _context.User.FirstOrDefaultAsync(u => u.Id == iRegister.UserId);
@@ -97,7 +115,7 @@ namespace Math4FunBackedn.Repositories.CourseRepo
                 throw new Exception("Không tìm thấy người dùng hoặc khóa học");
             }
             var listUC = await _context.Users_Courses.Where(uc => uc.UserId == iRegister.UserId && uc.CourseId == iRegister.CourseId).ToListAsync();
-            if (listUC.Count > 0) throw new Exception("Người dùng đã đăng ký khóa học");
+            if (listUC.Count > 0) throw new Exception("Bạn đã đăng ký khóa học");
             if (course.TotalMember == null)
             {
                 course.TotalMember = 0;
