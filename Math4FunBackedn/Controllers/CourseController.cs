@@ -1,17 +1,23 @@
 ﻿using Math4FunBackedn.DTO;
 using Math4FunBackedn.Repositories.CourseRepo;
+using Math4FunBackedn.Repositories.TokenRepo;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Math4FunBackedn.Controllers
 {
+    [Authorize]
+    [Route("Course")]
     public class CourseController : Controller
     {
         private ICourseRepository _courseRepository;
-        public CourseController(ICourseRepository courseRepository)
+        private ITokenRepository _tokenRepository;
+        public CourseController(ICourseRepository courseRepository, ITokenRepository tokenRepository)
         {
             _courseRepository = courseRepository;
+            _tokenRepository = tokenRepository;
         }
-        [HttpPost("Course/AddCourse")]
+        [HttpPost("AddCourse")]
         public async Task<IActionResult> AddCourse([FromBody] AddCourseDTO iCourse)
         {
             try
@@ -23,7 +29,7 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
-        [HttpGet("Course/GetAll")]
+        [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {
             try
@@ -35,7 +41,7 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
-        [HttpPost("Course/RegisterCourse")]
+        [HttpPost("RegisterCourse")]
         public async Task<IActionResult> RegisterCourse([FromBody] RegisterCourseDTO iRegister)
         {
             try
@@ -47,11 +53,13 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
-        [HttpGet("Course/GetAllCourseByUserId")]
+        [HttpGet("GetAllCourseByUserId")]
         public async Task<IActionResult> GetAllCourseByUserId(Guid UserId)
         {
+            string authorizationHeader = Request.Headers["Authorization"];
             try
             {
+                _tokenRepository.DecodeToken(authorizationHeader);
                 return Ok(await _courseRepository.GetCourseByUserId(UserId));
             }
             catch(Exception ex)
@@ -59,7 +67,7 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
-        [HttpGet("Course/GetDetailCourseByUserId")]
+        [HttpGet("GetDetailCourseByUserId")]
         public async Task<IActionResult> GetDetailCourseByUserId(Guid userId, Guid courseId)
         {
             try
@@ -72,7 +80,7 @@ namespace Math4FunBackedn.Controllers
 
             }
         }
-        [HttpGet("Course/GetDetailCourse")]
+        [HttpGet("GetDetailCourse")]
         public async Task<IActionResult> GetDetailCourse(Guid courseId)
         {
             try
@@ -85,7 +93,7 @@ namespace Math4FunBackedn.Controllers
 
             }
         }
-        [HttpPost("Course/Update")]
+        [HttpPost("Update")]
         public async Task<IActionResult> UpdateCourse([FromBody] UpdateCourseDTO iUpdate)
         {
             try
@@ -97,7 +105,7 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
-        [HttpDelete("Course/Delete")]
+        [HttpDelete("Delete")]
         public async Task<IActionResult> DeleteCourse(Guid courseId)
         {
             try
@@ -109,7 +117,7 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
-        [HttpGet("Course/LeaveCourseByUser")]
+        [HttpGet("LeaveCourseByUser")]
         public async Task<IActionResult> LeaveCourseByUser(Guid userId, Guid courseId)
         {
             try

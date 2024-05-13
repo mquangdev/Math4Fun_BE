@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Math4FunBackedn.Controllers
 {
+    [Route("Chapter")]
     public class ChapterController : Controller
     {
         private IChapterRepository _chapterRepository;
@@ -12,7 +13,7 @@ namespace Math4FunBackedn.Controllers
         {
             _chapterRepository = chapterRepository;
         }
-        [HttpPost("Chapter/Add")]
+        [HttpPost("Add")]
         public async Task<IActionResult> AddChapter([FromBody] AddChapterDTO iChapter)
         {
             try
@@ -24,7 +25,7 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
-        [HttpDelete("Chapter/Delete")]
+        [HttpDelete("Delete")]
         public async Task<IActionResult> Delete(Guid chapterId)
         {
             try
@@ -36,7 +37,7 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
-        [HttpGet("Chapter/Detail")]
+        [HttpGet("Detail")]
         public async Task<IActionResult> Detail(Guid chapterId)
         {
             try
@@ -48,7 +49,7 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
-        [HttpPost("Chapter/Update")]
+        [HttpPost("Update")]
         public async Task<IActionResult> Update([FromBody] UpdateChapterDTO iUpdate)
         {
             try

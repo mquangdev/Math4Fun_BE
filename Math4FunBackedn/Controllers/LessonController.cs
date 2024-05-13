@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Math4FunBackedn.Controllers
 {
+    [Route("Lesson")]
     public class LessonController : Controller
     {
         private ILessonRepository _lessonRepository;
@@ -12,7 +13,7 @@ namespace Math4FunBackedn.Controllers
         {
             _lessonRepository = lessonRepository;
         }
-        [HttpPost("Lesson/Add")]
+        [HttpPost("Add")]
         public async Task<IActionResult> AddLesson([FromBody] AddLessonDTO iAdd)
         {
             try
@@ -24,7 +25,7 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
-        [HttpDelete("Lesson/Delete")]
+        [HttpDelete("Delete")]
         public async Task<IActionResult> Delete(Guid id)
         {
             try
@@ -36,7 +37,7 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
-        [HttpGet("Lesson/Detail")]
+        [HttpGet("Detail")]
         public async Task<IActionResult> Detail(Guid id)
         {
             try
@@ -48,7 +49,7 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
-        [HttpPost("Lesson/Update")]
+        [HttpPost("Update")]
         public async Task<IActionResult> Update([FromBody] UpdateLessonDTO iUpdate)
         {
             try
@@ -60,7 +61,7 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
-        [HttpPost("Lesson/UpdateStatusLessonByUser")]
+        [HttpPost("UpdateStatusLessonByUser")]
         public async Task<IActionResult> UpdateStatusLessonByUser([FromBody] UserUpdateLessonDTO iUpdate)
         {
             try

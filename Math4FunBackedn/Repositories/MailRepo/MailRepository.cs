@@ -54,7 +54,5 @@ namespace Math4FunBackedn.Repositories.MailRepo
                 .Select(s => s[random.Next(s.Length)]).ToArray());
             return otp;
         }
-
-        
     }
 }
