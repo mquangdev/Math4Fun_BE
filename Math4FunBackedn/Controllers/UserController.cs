@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Math4FunBackedn.Controllers
 {
+    [Route("User")]
     public class UserController : Controller
     {
         private readonly IUserRepository _UserRepo;
@@ -12,7 +13,7 @@ namespace Math4FunBackedn.Controllers
         {
             _UserRepo = iUserRepo;
         }
-        [HttpGet("User/GetById")]
+        [HttpGet("GetById")]
         public async Task<IActionResult> GetById(Guid id)
         {
             try
@@ -25,7 +26,7 @@ namespace Math4FunBackedn.Controllers
                ex.Message);
             } 
         }
-        [HttpGet("User/GetAll")]
+        [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {
             try

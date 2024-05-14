@@ -6,14 +6,38 @@ using Math4FunBackedn.Repositories.CourseRepo;
 using Math4FunBackedn.Repositories.LessonRepo;
 using Math4FunBackedn.Repositories.MailRepo;
 using Math4FunBackedn.Repositories.QuestionRepo;
+using Math4FunBackedn.Repositories.TokenRepo;
 using Math4FunBackedn.Repositories.UserRepo;
 using Math4FunBackedn.Settings;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 var Configuration = new ConfigurationBuilder();
-
+var config = builder.Configuration;
+// Bearer authentication
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(x =>
+{
+    x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    {
+        ValidIssuer = config["JwtSettings:Issuer"],
+        ValidAudience = config["JwtSettings:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JwtSettings:Key"]!)),
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true
+    };
+});
+builder.Services.AddAuthorization();
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddControllersWithViews()
@@ -34,6 +58,7 @@ builder.Services.AddScoped(typeof(ILessonRepository), typeof(LessonRepository));
 builder.Services.AddScoped(typeof(IQuestionRepository), typeof(QuestionRepository));
 builder.Services.AddScoped(typeof(IAnswerRepository), typeof(AnswerRepository));
 builder.Services.AddScoped(typeof(IMailRepository), typeof(MailRepository));
+builder.Services.AddScoped(typeof(ITokenRepository), typeof(TokenRepository));
 builder.Services.AddScoped(typeof(IEmailSender), typeof(MailKitEmailSender));
 
 builder.Services.AddMailModule(builder.Configuration);
@@ -61,6 +86,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors("MyCors");
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseStaticFiles();
 app.MapControllers();

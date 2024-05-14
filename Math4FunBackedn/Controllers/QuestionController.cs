@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Math4FunBackedn.Controllers
 {
+    [Route("Question")]
     public class QuestionController : Controller
     {
         private IQuestionRepository _questionRepository;
@@ -12,7 +13,7 @@ namespace Math4FunBackedn.Controllers
         {
             _questionRepository = questionRepository;
         }
-        [HttpPost("Question/Add")]
+        [HttpPost("Add")]
         public async Task<IActionResult> AddQuestion([FromBody] AddQuestionDTO iAdd)
         {
             try
@@ -24,7 +25,7 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
-        [HttpGet("Question/Detail")]
+        [HttpGet("Detail")]
         public async Task<IActionResult> DetailQuestion(Guid questionId)
         {
             try
@@ -36,7 +37,7 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
-        [HttpDelete("Question/Remove")]
+        [HttpDelete("Remove")]
         public async Task<IActionResult> RemoveQuestion(Guid questionId)
         {
             try
@@ -48,7 +49,7 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
-        [HttpPost("Question/Update")]
+        [HttpPost("Update")]
         public async Task<IActionResult> UpdateQuestion([FromBody] UpdateQuestionDTO iUpdate)
         {
             try

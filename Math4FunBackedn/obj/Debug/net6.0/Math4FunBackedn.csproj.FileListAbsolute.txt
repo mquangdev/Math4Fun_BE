@@ -90,6 +90,7 @@ D:\University\Do_An\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\refint\Math4Fun
 D:\University\Do_An\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.pdb
 D:\University\Do_An\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.genruntimeconfig.cache
 D:\University\Do_An\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\ref\Math4FunBackedn.dll
+<<<<<<< HEAD
 F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\appsettings.Development.json
 F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\appsettings.json
 F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Math4FunBackedn.staticwebassets.runtime.json
@@ -142,3 +143,13 @@ F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\refint\Math4Fun
 F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.pdb
 F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.genruntimeconfig.cache
 F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\ref\Math4FunBackedn.dll
+=======
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+>>>>>>> 6a35fa140fb6910f416d0392db4bfd3b4ddff1ba
