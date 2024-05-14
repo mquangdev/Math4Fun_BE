@@ -58,6 +58,7 @@ F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\refint\Math4Fun
 F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.pdb
 F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.genruntimeconfig.cache
 F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\ref\Math4FunBackedn.dll
+<<<<<<< HEAD
 D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\appsettings.Development.json
 D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\appsettings.json
 D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Math4FunBackedn.staticwebassets.runtime.json
@@ -112,3 +113,5 @@ D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\refint\Math4F
 D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.pdb
 D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.genruntimeconfig.cache
 D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\ref\Math4FunBackedn.dll
+=======
+>>>>>>> 5eeb2fc146edf6051813f612139007c36636f671
