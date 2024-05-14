@@ -1,10 +1,12 @@
 ﻿using Math4FunBackedn.DTO;
 using Math4FunBackedn.Repositories.AccountRepo;
 using Math4FunBackedn.Repositories.UserRepo;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Math4FunBackedn.Controllers
 {
+    [Authorize]
     [Route("User")]
     public class UserController : Controller
     {

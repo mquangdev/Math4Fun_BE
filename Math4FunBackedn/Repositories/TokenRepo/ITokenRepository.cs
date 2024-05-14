@@ -6,6 +6,6 @@ namespace Math4FunBackedn.Repositories.TokenRepo
     public interface ITokenRepository
     {
         Task<string> GenerateToken(User user);
-        Task<string> DecodeToken(string token);
+        Task<Guid> DecodeToken(string token);
     }
 }

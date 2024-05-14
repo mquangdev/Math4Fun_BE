@@ -1,9 +1,11 @@
 ﻿using Math4FunBackedn.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
 namespace Math4FunBackedn.Controllers
 {
+    [Authorize]
     public class UploadController : Controller
     {
         private readonly IConfiguration _configuration;

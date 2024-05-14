@@ -29,6 +29,7 @@ namespace Math4FunBackedn.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
+        [AllowAnonymous]
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {
@@ -54,13 +55,13 @@ namespace Math4FunBackedn.Controllers
             }
         }
         [HttpGet("GetAllCourseByUserId")]
-        public async Task<IActionResult> GetAllCourseByUserId(Guid UserId)
+        public async Task<IActionResult> GetAllCourseByUserId()
         {
             string authorizationHeader = Request.Headers["Authorization"];
             try
             {
-                _tokenRepository.DecodeToken(authorizationHeader);
-                return Ok(await _courseRepository.GetCourseByUserId(UserId));
+                Guid userId = await _tokenRepository.DecodeToken(authorizationHeader);
+                return Ok(await _courseRepository.GetCourseByUserId(userId));
             }
             catch(Exception ex)
             {
@@ -68,10 +69,12 @@ namespace Math4FunBackedn.Controllers
             }
         }
         [HttpGet("GetDetailCourseByUserId")]
-        public async Task<IActionResult> GetDetailCourseByUserId(Guid userId, Guid courseId)
+        public async Task<IActionResult> GetDetailCourseByUserId(Guid courseId)
         {
+            string authorizationHeader = Request.Headers["Authorization"];
             try
             {
+                Guid userId = await _tokenRepository.DecodeToken(authorizationHeader);
                 return Ok(await _courseRepository.GetDetailCourseByUserId(userId, courseId));
             }
             catch(Exception ex)
@@ -118,10 +121,12 @@ namespace Math4FunBackedn.Controllers
             }
         }
         [HttpGet("LeaveCourseByUser")]
-        public async Task<IActionResult> LeaveCourseByUser(Guid userId, Guid courseId)
+        public async Task<IActionResult> LeaveCourseByUser(Guid courseId)
         {
+            string authorizationHeader = Request.Headers["Authorization"];
             try
             {
+                Guid userId = await _tokenRepository.DecodeToken(authorizationHeader);
                 return Ok(await _courseRepository.LeaveCourseByUser(userId, courseId));
             }
             catch (Exception ex)
