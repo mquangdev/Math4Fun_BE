@@ -1,10 +1,12 @@
 ﻿using Math4FunBackedn.DTO;
 using Math4FunBackedn.Repositories.ChapterRepo;
 using Math4FunBackedn.Repositories.CourseRepo;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Math4FunBackedn.Controllers
 {
+    [Authorize]
     [Route("Chapter")]
     public class ChapterController : Controller
     {

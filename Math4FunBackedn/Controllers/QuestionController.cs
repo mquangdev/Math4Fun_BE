@@ -1,10 +1,12 @@
 ﻿using Math4FunBackedn.DTO;
 using Math4FunBackedn.Repositories.LessonRepo;
 using Math4FunBackedn.Repositories.QuestionRepo;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Math4FunBackedn.Controllers
 {
+    [Authorize]
     [Route("Question")]
     public class QuestionController : Controller
     {

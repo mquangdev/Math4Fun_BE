@@ -1,6 +1,7 @@
 ﻿using Math4FunBackedn.Entities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Org.BouncyCastle.Asn1.Ocsp;
 using System.IdentityModel.Tokens.Jwt;
@@ -16,15 +17,14 @@ namespace Math4FunBackedn.Repositories.TokenRepo
         {
             _config = configuration;
         }
-        public async Task<string> DecodeToken(string iToken)
+        public async Task<Guid> DecodeToken(string iToken)
         {
             string token = iToken.Substring("Bearer ".Length).Trim(); ;
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
             JwtSecurityToken securityToken = (JwtSecurityToken)tokenHandler.ReadToken(token);
             IEnumerable<Claim> claims = securityToken.Claims;
-            string userId = claims.First(c => c.Type == "userId").Value;
-            Console.WriteLine("==== User Id ====", userId);
-            return "1";
+            Guid userId = Guid.Parse(claims.First(c => c.Type == "userId").Value);
+            return userId;
         }
         public async Task<string> GenerateToken(User user)
         {
