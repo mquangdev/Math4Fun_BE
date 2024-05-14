@@ -1,4 +1,5 @@
 using Math4FunBackedn.DBContext;
+using Math4FunBackedn.Identity;
 using Math4FunBackedn.Repositories.AccountRepo;
 using Math4FunBackedn.Repositories.AnswerRepo;
 using Math4FunBackedn.Repositories.ChapterRepo;
@@ -9,10 +10,13 @@ using Math4FunBackedn.Repositories.QuestionRepo;
 using Math4FunBackedn.Repositories.TokenRepo;
 using Math4FunBackedn.Repositories.UserRepo;
 using Math4FunBackedn.Settings;
+using Math4FunBackedn.Swagger;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,7 +41,10 @@ builder.Services.AddAuthentication(x =>
         ValidateIssuerSigningKey = true
     };
 });
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options  =>
+{
+    options.AddPolicy(IdentityData.AdminUserPolicyName, p => p.RequireClaim(IdentityData.AdminUserClaimName, "true"));
+});
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddControllersWithViews()
@@ -63,6 +70,7 @@ builder.Services.AddScoped(typeof(IEmailSender), typeof(MailKitEmailSender));
 
 builder.Services.AddMailModule(builder.Configuration);
 builder.Services.AddSwaggerGen();
+builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 builder.Services.AddDbContext<MyDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("Default"));

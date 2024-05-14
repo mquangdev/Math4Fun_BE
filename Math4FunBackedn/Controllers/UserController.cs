@@ -1,5 +1,6 @@
 ﻿using Math4FunBackedn.DTO;
 using Math4FunBackedn.Repositories.AccountRepo;
+using Math4FunBackedn.Repositories.TokenRepo;
 using Math4FunBackedn.Repositories.UserRepo;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,16 +12,20 @@ namespace Math4FunBackedn.Controllers
     public class UserController : Controller
     {
         private readonly IUserRepository _UserRepo;
-        public UserController(IUserRepository iUserRepo)
+        private ITokenRepository _tokenRepository;
+        public UserController(IUserRepository iUserRepo, ITokenRepository tokenRepository)
         {
             _UserRepo = iUserRepo;
+            _tokenRepository = tokenRepository;
         }
         [HttpGet("GetById")]
-        public async Task<IActionResult> GetById(Guid id)
+        public async Task<IActionResult> GetById()
         {
+            string authorizationHeader = Request.Headers["Authorization"];
             try
             {
-                return Ok(await _UserRepo.GetById(id));
+                Guid userId = await _tokenRepository.DecodeToken(authorizationHeader);
+                return Ok(await _UserRepo.GetById(userId));
             }
             catch(Exception ex)
             {
