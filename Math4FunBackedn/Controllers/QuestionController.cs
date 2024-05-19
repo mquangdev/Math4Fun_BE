@@ -1,4 +1,5 @@
 ﻿using Math4FunBackedn.DTO;
+using Math4FunBackedn.Entities;
 using Math4FunBackedn.Repositories.LessonRepo;
 using Math4FunBackedn.Repositories.QuestionRepo;
 using Microsoft.AspNetCore.Authorization;
@@ -57,6 +58,19 @@ namespace Math4FunBackedn.Controllers
             try
             {
                 return Ok(await _questionRepository.Update(iUpdate));
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex);
+            }
+        }
+        [HttpPost("AddQuestionToDb")] 
+        public async Task<IActionResult> AddQuestionToDb([FromBody] AddQuestionToDbDTO iQuestion)
+        {
+            try
+            {
+
+                return Ok(await _questionRepository.AddQuestionToDb(iQuestion));
             }
             catch(Exception ex)
             {
