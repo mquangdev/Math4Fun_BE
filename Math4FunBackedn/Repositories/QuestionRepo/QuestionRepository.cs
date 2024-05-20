@@ -129,112 +129,115 @@ namespace Math4FunBackedn.Repositories.QuestionRepo
             return 1;
         }
 
-        public async Task<int> AddQuestionToDb(AddQuestionToDbDTO iAdd)
+        public async Task<int> AddQuestionToDb(AddQuestionToDbDTO[] listAdd)
         {
-            switch (iAdd.Type)
+            foreach(var iAdd in listAdd)
             {
-                case QuestionType.chooseAnswer:
-                    {
-                        var id = Guid.NewGuid();
-                        var newQuestion = new Question()
+                switch (iAdd.Type)
+                {
+                    case QuestionType.chooseAnswer:
                         {
-                            Id = id,
-                            Image = iAdd.Image,
-                            Text = iAdd.Text,
-                            Type = iAdd.Type,
-                            Value = iAdd.Value,
-                            LessonId = iAdd.LessonId
-                        };
-                        var listAnswer = new List<Answer>();
-                        iAdd.AnswerList.ForEach((answer) =>
-                        {
-                            var newAnswer = new Answer()
+                            var id = Guid.NewGuid();
+                            var newQuestion = new Question()
                             {
-                                Id = Guid.NewGuid(),
-                                Text = answer.Text,
-                                Value = answer.Value,
-                                QuestionId = id
+                                Id = id,
+                                Image = iAdd.Image,
+                                Text = iAdd.Text,
+                                Type = iAdd.Type,
+                                Value = iAdd.Value,
+                                LessonId = iAdd.LessonId
                             };
-                            listAnswer.Add(newAnswer);
-                        });
-                        newQuestion.AnswerList = listAnswer;
-                        await _context.Question.AddAsync(newQuestion);
-                        await _context.SaveChangesAsync();
-                        break;
-                    }
-                case QuestionType.choosePair:
-                    {
-                        var id = Guid.NewGuid();
-                        var newQuestion = new Question()
-                        {
-                            Id = id,
-                            Image = iAdd.Image,
-                            Text = iAdd.Text,
-                            Type = iAdd.Type,
-                            LessonId = iAdd.LessonId
-                        };
-                        var listAnswer = new List<Answer>();
-                        iAdd.AnswerList.ForEach((answer) =>
-                        {
-                            var newAnswer = new Answer()
+                            var listAnswer = new List<Answer>();
+                            iAdd.AnswerList.ForEach((answer) =>
                             {
-                                Id = Guid.NewGuid(),
-                                Text = answer.Text,
-                                Value = answer.Value,
-                                QuestionId = id
-                            };
-                            listAnswer.Add(newAnswer);
-                        });
-                        newQuestion.AnswerList = listAnswer;
-                        await _context.Question.AddAsync(newQuestion);
-                        await _context.SaveChangesAsync();
-                        break;
-                    }
-                case QuestionType.chooseToBlank:
-                    {
-                        var id = Guid.NewGuid();
-                        var newQuestion = new Question()
+                                var newAnswer = new Answer()
+                                {
+                                    Id = Guid.NewGuid(),
+                                    Text = answer.Text,
+                                    Value = answer.Value,
+                                    QuestionId = id
+                                };
+                                listAnswer.Add(newAnswer);
+                            });
+                            newQuestion.AnswerList = listAnswer;
+                            await _context.Question.AddAsync(newQuestion);
+                            await _context.SaveChangesAsync();
+                            break;
+                        }
+                    case QuestionType.choosePair:
                         {
-                            Id = id,
-                            Image = iAdd.Image,
-                            Text = iAdd.Text,
-                            TextBonus = iAdd.TextBonus,
-                            Type = iAdd.Type,
-                            LessonId = iAdd.LessonId
-                        };
-                        var listAnswer = new List<Answer>();
-                        iAdd.AnswerList.ForEach((answer) =>
-                        {
-                            var newAnswer = new Answer()
+                            var id = Guid.NewGuid();
+                            var newQuestion = new Question()
                             {
-                                Id = Guid.NewGuid(),
-                                Text = answer.Text,
-                                Value = answer.Value,
-                                QuestionId = id
+                                Id = id,
+                                Image = iAdd.Image,
+                                Text = iAdd.Text,
+                                Type = iAdd.Type,
+                                LessonId = iAdd.LessonId
                             };
-                            listAnswer.Add(newAnswer);
-                        });
-                        newQuestion.AnswerList = listAnswer;
-                        await _context.Question.AddAsync(newQuestion);
-                        await _context.SaveChangesAsync();
-                        break;
-                    }
-                case QuestionType.typeToBlank:
-                    {
-                        var id = Guid.NewGuid();
-                        var newQuestion = new Question()
+                            var listAnswer = new List<Answer>();
+                            iAdd.AnswerList.ForEach((answer) =>
+                            {
+                                var newAnswer = new Answer()
+                                {
+                                    Id = Guid.NewGuid(),
+                                    Text = answer.Text,
+                                    Value = answer.Value,
+                                    QuestionId = id
+                                };
+                                listAnswer.Add(newAnswer);
+                            });
+                            newQuestion.AnswerList = listAnswer;
+                            await _context.Question.AddAsync(newQuestion);
+                            await _context.SaveChangesAsync();
+                            break;
+                        }
+                    case QuestionType.chooseToBlank:
                         {
-                            Id = id,
-                            Image = iAdd.Image,
-                            Text = iAdd.Text,
-                            Type = iAdd.Type,
-                            LessonId = iAdd.LessonId,
-                            Value = iAdd.Value
-                        };
-                        await _context.Question.AddAsync(newQuestion);
-                        await _context.SaveChangesAsync();
-                        break;
-                    }
+                            var id = Guid.NewGuid();
+                            var newQuestion = new Question()
+                            {
+                                Id = id,
+                                Image = iAdd.Image,
+                                Text = iAdd.Text,
+                                TextBonus = iAdd.TextBonus,
+                                Type = iAdd.Type,
+                                LessonId = iAdd.LessonId
+                            };
+                            var listAnswer = new List<Answer>();
+                            iAdd.AnswerList.ForEach((answer) =>
+                            {
+                                var newAnswer = new Answer()
+                                {
+                                    Id = Guid.NewGuid(),
+                                    Text = answer.Text,
+                                    Value = answer.Value,
+                                    QuestionId = id
+                                };
+                                listAnswer.Add(newAnswer);
+                            });
+                            newQuestion.AnswerList = listAnswer;
+                            await _context.Question.AddAsync(newQuestion);
+                            await _context.SaveChangesAsync();
+                            break;
+                        }
+                    case QuestionType.typeToBlank:
+                        {
+                            var id = Guid.NewGuid();
+                            var newQuestion = new Question()
+                            {
+                                Id = id,
+                                Image = iAdd.Image,
+                                Text = iAdd.Text,
+                                Type = iAdd.Type,
+                                LessonId = iAdd.LessonId,
+                                Value = iAdd.Value
+                            };
+                            await _context.Question.AddAsync(newQuestion);
+                            await _context.SaveChangesAsync();
+                            break;
+                        }
+                }
             }
             return 1;
         }

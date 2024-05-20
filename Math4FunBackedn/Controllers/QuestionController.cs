@@ -65,12 +65,12 @@ namespace Math4FunBackedn.Controllers
             }
         }
         [HttpPost("AddQuestionToDb")] 
-        public async Task<IActionResult> AddQuestionToDb([FromBody] AddQuestionToDbDTO iQuestion)
+        public async Task<IActionResult> AddQuestionToDb([FromBody] AddQuestionToDbDTO[] iQuestionList)
         {
             try
             {
 
-                return Ok(await _questionRepository.AddQuestionToDb(iQuestion));
+                return Ok(await _questionRepository.AddQuestionToDb(iQuestionList));
             }
             catch(Exception ex)
             {
