@@ -182,6 +182,13 @@ namespace Math4FunBackedn.Migrations
                     b.Property<string>("Value")
                         .HasColumnType("text");
 
+                    b.Property<string>("createdAt")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool?>("isAiGen")
+                        .HasColumnType("boolean");
+
                     b.HasKey("Id");
 
                     b.HasIndex("LessonId");

@@ -44,6 +44,7 @@ namespace Math4FunBackedn.Repositories.LessonRepo
         {
             var lesson = await _context.Lesson.Include(l => l.QuestionList).FirstOrDefaultAsync(l => l.Id == id);
             if (lesson == null) throw new Exception("Không tìm thấy chương học");
+            lesson.QuestionList = lesson.QuestionList.OrderBy(q => q.createdAt).ToList();
             return lesson;
         }
 
