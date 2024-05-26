@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Math4FunBackedn.Controllers
 {
-    [Authorize]
     [Route("User")]
     public class UserController : Controller
     {
@@ -34,11 +33,11 @@ namespace Math4FunBackedn.Controllers
             } 
         }
         [HttpGet("GetAll")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] int page = 1, [FromQuery] int limit = 10, [FromQuery] string keyword = "")
         {
             try
             {
-                return Ok(await _UserRepo.GetAll());
+                return Ok(await _UserRepo.GetAll(page, limit, keyword));
             }
             catch(Exception ex)
             {

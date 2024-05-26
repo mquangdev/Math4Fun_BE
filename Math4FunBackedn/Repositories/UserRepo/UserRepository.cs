@@ -2,6 +2,7 @@
 using Math4FunBackedn.DTO;
 using Math4FunBackedn.Entities;
 using Microsoft.EntityFrameworkCore;
+using MimeKit.Cryptography;
 
 namespace Math4FunBackedn.Repositories.UserRepo
 {
@@ -13,11 +14,22 @@ namespace Math4FunBackedn.Repositories.UserRepo
             _context = iContext;
         }
 
-        public async Task<List<User>> GetAll()
+        public async Task<PageResult<User>> GetAll(int page, int limit, string keyword)
         {
-            var list = new List<User>();
-            list = _context.User.ToList<User>();
-            return list;
+            var query = _context.User.AsQueryable();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                query = query.Where(u => u.Username.Contains(keyword) || u.Email.Contains(keyword) || u.Fullname.Contains(keyword));
+            }
+            var total = await query.CountAsync();
+            var skip = (page - 1) * limit;
+            var data = await query.Skip(skip).Take(limit).ToListAsync();
+            var result = new PageResult<User>
+            {
+                Data = data,
+                Total = total
+            };
+            return result;
         }
 
         public async Task<User> GetById(Guid id)
