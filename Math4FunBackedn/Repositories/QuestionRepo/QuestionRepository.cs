@@ -22,6 +22,7 @@ namespace Math4FunBackedn.Repositories.QuestionRepo
         }
         public async Task<int> Add(AddQuestionDTO iAdd)
         {
+            string createdAt = DateTime.UtcNow.ToString("o");
             switch (iAdd.Type)
             {
                 case QuestionType.chooseAnswer:
@@ -34,7 +35,8 @@ namespace Math4FunBackedn.Repositories.QuestionRepo
                             Text = iAdd.Text,
                             Type = iAdd.Type,
                             Value = iAdd.Value,
-                            LessonId = iAdd.LessonId
+                            LessonId = iAdd.LessonId,
+                            createdAt = createdAt
                         };
                         var listAnswer = new List<Answer>();
                         iAdd.AnswerList.ForEach((answer) =>
@@ -61,7 +63,9 @@ namespace Math4FunBackedn.Repositories.QuestionRepo
                             Image = iAdd.Image,
                             Text = iAdd.Text,
                             Type = iAdd.Type,
-                            LessonId = iAdd.LessonId
+                            LessonId = iAdd.LessonId,
+                            createdAt = createdAt
+
                         };
                         var listAnswer = new List<Answer>();
                         iAdd.AnswerList.ForEach((answer) =>
@@ -90,7 +94,9 @@ namespace Math4FunBackedn.Repositories.QuestionRepo
                             Text = iAdd.Text,
                             TextBonus = iAdd.TextBonus,
                             Type = iAdd.Type,
-                            LessonId = iAdd.LessonId
+                            LessonId = iAdd.LessonId,
+                            createdAt = createdAt
+
                         };
                         var listAnswer = new List<Answer>();
                         iAdd.AnswerList.ForEach((answer) =>
@@ -119,7 +125,9 @@ namespace Math4FunBackedn.Repositories.QuestionRepo
                             Text = iAdd.Text,
                             Type = iAdd.Type,
                             LessonId = iAdd.LessonId,
-                            Value = iAdd.Value
+                            Value = iAdd.Value,
+                            createdAt = createdAt
+
                         };
                         await _context.Question.AddAsync(newQuestion);
                         await _context.SaveChangesAsync();
@@ -128,6 +136,129 @@ namespace Math4FunBackedn.Repositories.QuestionRepo
             }
             return 1;
         }
+
+        public async Task<int> AddQuestionToDb(AddQuestionToDbDTO[] listAdd)
+        {
+            foreach(var iAdd in listAdd)
+            {
+                string createdAt  = DateTime.UtcNow.ToString("o");
+                switch (iAdd.Type)
+                {
+                    case QuestionType.chooseAnswer:
+                        {
+                            var id = Guid.NewGuid();
+                            var newQuestion = new Question()
+                            {
+                                Id = id,
+                                Image = iAdd.Image,
+                                Text = iAdd.Text,
+                                Type = iAdd.Type,
+                                Value = iAdd.Value,
+                                LessonId = iAdd.LessonId,
+                                isAiGen = true,
+                                createdAt = createdAt
+                            };
+                            var listAnswer = new List<Answer>();
+                            iAdd.AnswerList.ForEach((answer) =>
+                            {
+                                var newAnswer = new Answer()
+                                {
+                                    Id = Guid.NewGuid(),
+                                    Text = answer.Text,
+                                    Value = answer.Value,
+                                    QuestionId = id
+                                };
+                                listAnswer.Add(newAnswer);
+                            });
+                            newQuestion.AnswerList = listAnswer;
+                            await _context.Question.AddAsync(newQuestion);
+                            await _context.SaveChangesAsync();
+                            break;
+                        }
+                    case QuestionType.choosePair:
+                        {
+                            var id = Guid.NewGuid();
+                            var newQuestion = new Question()
+                            {
+                                Id = id,
+                                Image = iAdd.Image,
+                                Text = iAdd.Text,
+                                Type = iAdd.Type,
+                                LessonId = iAdd.LessonId,
+                                isAiGen = true,
+                                createdAt = createdAt
+                            };
+                            var listAnswer = new List<Answer>();
+                            iAdd.AnswerList.ForEach((answer) =>
+                            {
+                                var newAnswer = new Answer()
+                                {
+                                    Id = Guid.NewGuid(),
+                                    Text = answer.Text,
+                                    Value = answer.Value,
+                                    QuestionId = id
+                                };
+                                listAnswer.Add(newAnswer);
+                            });
+                            newQuestion.AnswerList = listAnswer;
+                            await _context.Question.AddAsync(newQuestion);
+                            await _context.SaveChangesAsync();
+                            break;
+                        }
+                    case QuestionType.chooseToBlank:
+                        {
+                            var id = Guid.NewGuid();
+                            var newQuestion = new Question()
+                            {
+                                Id = id,
+                                Image = iAdd.Image,
+                                Text = iAdd.Text,
+                                TextBonus = iAdd.TextBonus,
+                                Type = iAdd.Type,
+                                LessonId = iAdd.LessonId,
+                                isAiGen = true,
+                                createdAt = createdAt
+                            };
+                            var listAnswer = new List<Answer>();
+                            iAdd.AnswerList.ForEach((answer) =>
+                            {
+                                var newAnswer = new Answer()
+                                {
+                                    Id = Guid.NewGuid(),
+                                    Text = answer.Text,
+                                    Value = answer.Value,
+                                    QuestionId = id
+                                };
+                                listAnswer.Add(newAnswer);
+                            });
+                            newQuestion.AnswerList = listAnswer;
+                            await _context.Question.AddAsync(newQuestion);
+                            await _context.SaveChangesAsync();
+                            break;
+                        }
+                    case QuestionType.typeToBlank:
+                        {
+                            var id = Guid.NewGuid();
+                            var newQuestion = new Question()
+                            {
+                                Id = id,
+                                Image = iAdd.Image,
+                                Text = iAdd.Text,
+                                Type = iAdd.Type,
+                                LessonId = iAdd.LessonId,
+                                Value = iAdd.Value,
+                                isAiGen = true,
+                                createdAt = createdAt
+                            };
+                            await _context.Question.AddAsync(newQuestion);
+                            await _context.SaveChangesAsync();
+                            break;
+                        }
+                }
+            }
+            return 1;
+        }
+
         public async Task<Question> DetailQuestion(Guid questionId)
         {
             var question = await _context.Question.Include(q => q.AnswerList).FirstOrDefaultAsync(q => q.Id == questionId);

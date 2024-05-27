@@ -5,10 +5,10 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
-build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Math4FunBackedn
 build_property.RootNamespace = Math4FunBackedn
+<<<<<<< HEAD
 build_property.ProjectDir = f:\Personal Project\Math4Fun_BE\Math4FunBackedn\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
@@ -16,4 +16,11 @@ build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = f:\Personal Project\Math4Fun_BE\Math4FunBackedn
+=======
+build_property.ProjectDir = D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn
+>>>>>>> b014c320358bdb12a375d44b313a6ca14b098ff3
 build_property._RazorSourceGeneratorDebug = 

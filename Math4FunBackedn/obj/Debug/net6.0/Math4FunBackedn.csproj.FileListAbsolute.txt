@@ -1,60 +1,54 @@
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\appsettings.Development.json
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\appsettings.json
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Math4FunBackedn.staticwebassets.runtime.json
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Math4FunBackedn.exe
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Math4FunBackedn.deps.json
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Math4FunBackedn.runtimeconfig.json
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Math4FunBackedn.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Math4FunBackedn.pdb
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\AutoMapper.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Humanizer.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\MailKit.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\MediatR.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\MediatR.Contracts.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.OpenApi.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\MimeKit.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Newtonsoft.Json.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Npgsql.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\BouncyCastle.Crypto.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.csproj.AssemblyReference.cache
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.GeneratedMSBuildEditorConfig.editorconfig
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.AssemblyInfoInputs.cache
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.AssemblyInfo.cs
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.csproj.CoreCompileInputs.cache
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.MvcApplicationPartsAssemblyInfo.cs
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.MvcApplicationPartsAssemblyInfo.cache
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.sourcelink.json
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\staticwebassets.build.json
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\staticwebassets.development.json
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\staticwebassets\msbuild.Math4FunBackedn.Microsoft.AspNetCore.StaticWebAssets.props
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\staticwebassets\msbuild.build.Math4FunBackedn.props
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Math4FunBackedn.props
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Math4FunBackedn.props
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\staticwebassets.pack.json
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\scopedcss\bundle\Math4FunBackedn.styles.css
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4Fun.9A2B58D0.Up2Date
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\refint\Math4FunBackedn.dll
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.pdb
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.genruntimeconfig.cache
-F:\Personal Project\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\ref\Math4FunBackedn.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\appsettings.Development.json
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\appsettings.json
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Math4FunBackedn.staticwebassets.runtime.json
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Math4FunBackedn.exe
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Math4FunBackedn.deps.json
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Math4FunBackedn.runtimeconfig.json
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Math4FunBackedn.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Math4FunBackedn.pdb
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\AutoMapper.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Humanizer.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\MailKit.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\MediatR.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\MediatR.Contracts.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Microsoft.OpenApi.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\MimeKit.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Npgsql.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\BouncyCastle.Crypto.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.csproj.AssemblyReference.cache
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.GeneratedMSBuildEditorConfig.editorconfig
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.AssemblyInfoInputs.cache
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.AssemblyInfo.cs
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.csproj.CoreCompileInputs.cache
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.MvcApplicationPartsAssemblyInfo.cs
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.MvcApplicationPartsAssemblyInfo.cache
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\staticwebassets.build.json
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\staticwebassets.development.json
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\scopedcss\bundle\Math4FunBackedn.styles.css
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.csproj.CopyComplete
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\refint\Math4FunBackedn.dll
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.pdb
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\Math4FunBackedn.genruntimeconfig.cache
+D:\University\Do_An_1\Math4Fun_BE\Math4FunBackedn\obj\Debug\net6.0\ref\Math4FunBackedn.dll

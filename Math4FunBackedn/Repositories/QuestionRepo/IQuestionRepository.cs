@@ -9,5 +9,6 @@ namespace Math4FunBackedn.Repositories.QuestionRepo
         Task<Question> DetailQuestion(Guid questionId);
         Task<int> Remove(Guid questionId);
         Task<int> Update(UpdateQuestionDTO iUpdate);
+        Task<int> AddQuestionToDb(AddQuestionToDbDTO[] iQuestion);
     }
 }
