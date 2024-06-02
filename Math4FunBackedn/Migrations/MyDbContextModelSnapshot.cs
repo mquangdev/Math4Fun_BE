@@ -196,6 +196,56 @@ namespace Math4FunBackedn.Migrations
                     b.ToTable("Question");
                 });
 
+            modelBuilder.Entity("Math4FunBackedn.Entities.Streak", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("CurrentStreakCount")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("LastLessonDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<DateTime>("StartLessonDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Streak");
+                });
+
+            modelBuilder.Entity("Math4FunBackedn.Entities.StreakHistory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("StreakLength")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("StreakHistory");
+                });
+
             modelBuilder.Entity("Math4FunBackedn.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -300,6 +350,28 @@ namespace Math4FunBackedn.Migrations
                         .IsRequired();
 
                     b.Navigation("Lesson");
+                });
+
+            modelBuilder.Entity("Math4FunBackedn.Entities.Streak", b =>
+                {
+                    b.HasOne("Math4FunBackedn.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Math4FunBackedn.Entities.StreakHistory", b =>
+                {
+                    b.HasOne("Math4FunBackedn.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Math4FunBackedn.Entities.Users_Courses", b =>

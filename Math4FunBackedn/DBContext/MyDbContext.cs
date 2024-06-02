@@ -18,6 +18,8 @@ namespace Math4FunBackedn.DBContext
         public DbSet<Question> Question { get; set; }
         public DbSet<Answer> Answer { get; set; }
         public DbSet<Users_Courses> Users_Courses { get; set; }
+        public DbSet<Streak> Streak { get; set; }
+        public DbSet<StreakHistory> StreakHistory { get; set; }
         #endregion
     }
 }

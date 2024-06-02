@@ -1,6 +1,7 @@
 ﻿using Math4FunBackedn.DBContext;
 using Math4FunBackedn.DTO;
 using Math4FunBackedn.Entities;
+using Math4FunBackedn.Repositories.StreakRepo;
 using Microsoft.EntityFrameworkCore;
 
 namespace Math4FunBackedn.Repositories.LessonRepo
@@ -8,9 +9,12 @@ namespace Math4FunBackedn.Repositories.LessonRepo
     public class LessonRepository : ILessonRepository
     {
         private readonly MyDbContext _context;
-        public LessonRepository(MyDbContext context)
+        private readonly IStreakRepository _streakRepository;
+        public LessonRepository(MyDbContext context, IStreakRepository streakRepo)
         {
             _context = context;
+            _streakRepository = streakRepo;
+
         }
         public async Task<int> AddLesson(AddLessonDTO iAdd)
         {
@@ -87,6 +91,11 @@ namespace Math4FunBackedn.Repositories.LessonRepo
             }
             lesson.Status = iUpdate.Status;
             user.TotalExp += expPlus;
+            // If complete lesson => update streak
+            if(iUpdate.Status == true)
+            {
+                await _streakRepository.UpdateStreak(DateTime.Now, iUpdate.UserId);
+            }
             await _context.SaveChangesAsync();
             return 1;
         }

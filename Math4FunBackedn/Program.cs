@@ -7,6 +7,7 @@ using Math4FunBackedn.Repositories.CourseRepo;
 using Math4FunBackedn.Repositories.LessonRepo;
 using Math4FunBackedn.Repositories.MailRepo;
 using Math4FunBackedn.Repositories.QuestionRepo;
+using Math4FunBackedn.Repositories.StreakRepo;
 using Math4FunBackedn.Repositories.TokenRepo;
 using Math4FunBackedn.Repositories.UserRepo;
 using Math4FunBackedn.Settings;
@@ -67,6 +68,8 @@ builder.Services.AddScoped(typeof(IAnswerRepository), typeof(AnswerRepository));
 builder.Services.AddScoped(typeof(IMailRepository), typeof(MailRepository));
 builder.Services.AddScoped(typeof(ITokenRepository), typeof(TokenRepository));
 builder.Services.AddScoped(typeof(IEmailSender), typeof(MailKitEmailSender));
+builder.Services.AddScoped(typeof(IStreakHistoryRepository), typeof(StreakHistoryRepository));
+builder.Services.AddScoped(typeof(IStreakRepository), typeof(StreakRepository));
 
 builder.Services.AddMailModule(builder.Configuration);
 builder.Services.AddSwaggerGen();
