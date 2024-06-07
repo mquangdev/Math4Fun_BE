@@ -20,13 +20,20 @@ namespace Math4FunBackedn.Controllers
             _tokenRepo = tokenRepo;
         }
         [HttpGet("CurrentStreak")]
-        public async Task<IActionResult> GetCurrentStreak()
+        public async Task<IActionResult> GetCurrentStreak(Guid? anotherUserId)
         {
             string authorizationHeader = Request.Headers["Authorization"];
             try
             {
                 var userId = await _tokenRepo.DecodeToken(authorizationHeader);
-                return Ok(await _streakRepo.GetCurrentStreak(userId));
+                if(anotherUserId != null)
+                {
+                    return Ok(await _streakRepo.GetCurrentStreak((Guid)anotherUserId));
+                }
+                else
+                {
+                    return Ok(await _streakRepo.GetCurrentStreak(userId));
+                }
             }
             catch(Exception ex)
             {

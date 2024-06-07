@@ -62,10 +62,10 @@ namespace Math4FunBackedn.Repositories.CourseRepo
         {
             var listUserCourse = await _context.Users_Courses.Include(uc => uc.Course).Where(uc => uc.UserId == iUserId).ToListAsync();
             var list = new List<Course>();
-            if (listUserCourse.Count == 0)
-            {
-                throw new Exception("Người dùng chưa đăng ký khóa học nào");
-            }
+            //if (listUserCourse.Count == 0)
+            //{
+            //    throw new Exception("Người dùng chưa đăng ký khóa học nào");
+            //}
             listUserCourse.ForEach(uc =>
             {
                 list.Add(uc.Course);

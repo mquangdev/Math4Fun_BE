@@ -124,6 +124,28 @@ namespace Math4FunBackedn.Migrations
                     b.ToTable("Course");
                 });
 
+            modelBuilder.Entity("Math4FunBackedn.Entities.Friends", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<Guid>("FriendId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FriendId");
+
+                    b.ToTable("Friend");
+                });
+
             modelBuilder.Entity("Math4FunBackedn.Entities.Lesson", b =>
                 {
                     b.Property<Guid>("Id")
@@ -328,6 +350,17 @@ namespace Math4FunBackedn.Migrations
                         .IsRequired();
 
                     b.Navigation("Course");
+                });
+
+            modelBuilder.Entity("Math4FunBackedn.Entities.Friends", b =>
+                {
+                    b.HasOne("Math4FunBackedn.Entities.User", "Friend")
+                        .WithMany()
+                        .HasForeignKey("FriendId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Friend");
                 });
 
             modelBuilder.Entity("Math4FunBackedn.Entities.Lesson", b =>

@@ -2,9 +2,14 @@
 
 namespace Math4FunBackedn.Repositories.StreakRepo
 {
+    public class StreakUpdateReponse
+    {
+        public Streak? Streak { get; set; }
+        public bool IsContinueStreakUpdate { get; set; }
+    }
     public interface IStreakRepository
     {
-        Task<Streak> UpdateStreak(DateTime dateCompleteLesson, Guid UserId);
-        Task<Streak> GetCurrentStreak(Guid UserId);
+        Task<StreakUpdateReponse> UpdateStreak(DateTime dateCompleteLesson, Guid UserId);
+        Task<StreakUpdateReponse> GetCurrentStreak(Guid UserId);
     }
 }

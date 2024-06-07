@@ -18,13 +18,20 @@ namespace Math4FunBackedn.Controllers
             _tokenRepository = tokenRepository;
         }
         [HttpGet("GetById")]
-        public async Task<IActionResult> GetById()
+        public async Task<IActionResult> GetById(Guid? anotherUserId)
         {
             string authorizationHeader = Request.Headers["Authorization"];
             try
             {
                 Guid userId = await _tokenRepository.DecodeToken(authorizationHeader);
-                return Ok(await _UserRepo.GetById(userId));
+                if(anotherUserId != null)
+                {
+                    return Ok(await _UserRepo.GetById((Guid)anotherUserId));
+                }
+                else
+                {
+                    return Ok(await _UserRepo.GetById(userId));
+                }
             }
             catch(Exception ex)
             {

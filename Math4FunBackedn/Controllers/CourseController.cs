@@ -56,13 +56,21 @@ namespace Math4FunBackedn.Controllers
             }
         }
         [HttpGet("GetAllCourseByUserId")]
-        public async Task<IActionResult> GetAllCourseByUserId()
+        public async Task<IActionResult> GetAllCourseByUserId(Guid? anotherUserId)
         {
             string authorizationHeader = Request.Headers["Authorization"];
             try
             {
                 Guid userId = await _tokenRepository.DecodeToken(authorizationHeader);
-                return Ok(await _courseRepository.GetCourseByUserId(userId));
+                if(anotherUserId != null)
+                {
+                    return Ok(await _courseRepository.GetCourseByUserId((Guid)anotherUserId));
+                }
+                else
+                {
+                    return Ok(await _courseRepository.GetCourseByUserId(userId));
+
+                }
             }
             catch(Exception ex)
             {

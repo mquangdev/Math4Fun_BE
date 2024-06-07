@@ -11,17 +11,52 @@ namespace Math4FunBackedn.Repositories.StreakRepo
             _context = context;
         }
 
-        public async Task<Streak> GetCurrentStreak(Guid UserId)
+        public async Task<StreakUpdateReponse> GetCurrentStreak(Guid UserId)
         {
-            var streak = _context.Streak.FirstOrDefault(s => s.UserId == UserId);
-            if(streak == null)
+            var streakUser = _context.Streak.FirstOrDefault(s => s.UserId == UserId);
+            if(streakUser == null)
             {
                 throw new Exception("Người dùng chưa có streak");
             }
-            return streak;
+            var dayBeforeYesterday = DateTime.UtcNow.AddDays(-2).Date;
+            // only check if currentStreakCount > 0
+            if(streakUser.LastLessonDate.Date <= dayBeforeYesterday && streakUser.CurrentStreakCount > 0)
+            {
+                // Miss a day -> create new streak history record and reset streak
+                var newStreakHistory = new StreakHistory
+                {
+                    Id = Guid.NewGuid(),
+                    EndDate = streakUser.LastLessonDate,
+                    StartDate = streakUser.LastLessonDate.AddDays(1 - streakUser.CurrentStreakCount),
+                    StreakLength = streakUser.CurrentStreakCount,
+                    UserId = UserId
+                };
+                _context.StreakHistory.Add(newStreakHistory);
+                // reset streak and (do not reset startDate and endDate)
+                streakUser.CurrentStreakCount = 0;
+                await _context.SaveChangesAsync();
+                return new StreakUpdateReponse
+                {
+                    IsContinueStreakUpdate = false,
+                    Streak = streakUser
+                };
+            }
+            if(streakUser.CurrentStreakCount == 0)
+            {
+                return new StreakUpdateReponse
+                {
+                    IsContinueStreakUpdate = false,
+                    Streak = streakUser
+                };
+            }
+            return new StreakUpdateReponse
+            {
+                IsContinueStreakUpdate = true,
+                Streak = streakUser
+            };
         }
 
-        public async Task<Streak> UpdateStreak(DateTime dateCompleteLesson, Guid UserId)
+        public async Task<StreakUpdateReponse> UpdateStreak(DateTime dateCompleteLesson, Guid UserId)
         {
             var streakUser = _context.Streak.FirstOrDefault(s => s.UserId == UserId);
             // If does not exist any streak of this user -> create new record
@@ -37,7 +72,11 @@ namespace Math4FunBackedn.Repositories.StreakRepo
                 };
                 _context.Streak.Add(streak);
                 await _context.SaveChangesAsync();
-                return streak;
+                return new StreakUpdateReponse
+                {
+                    IsContinueStreakUpdate = true,
+                    Streak = streak
+                };
             }
             // If already exist streak record of this user
             else
@@ -45,7 +84,11 @@ namespace Math4FunBackedn.Repositories.StreakRepo
                 // already complete lesson today
                 if(streakUser.LastLessonDate.Date == dateCompleteLesson.Date)
                 {
-                    return streakUser;
+                    return new StreakUpdateReponse
+                    {
+                        IsContinueStreakUpdate = false,
+                        Streak = streakUser
+                    };
                 }
                 // finish the lesson yesterday
                 else if(streakUser.LastLessonDate.Date == dateCompleteLesson.AddDays(-1).Date)
@@ -53,7 +96,11 @@ namespace Math4FunBackedn.Repositories.StreakRepo
                     streakUser.CurrentStreakCount++;
                     streakUser.LastLessonDate = dateCompleteLesson;
                     await _context.SaveChangesAsync();
-                    return streakUser;
+                    return new StreakUpdateReponse
+                    {
+                        IsContinueStreakUpdate = true,
+                        Streak = streakUser
+                    };
                 }
                 else
                 {
@@ -62,7 +109,8 @@ namespace Math4FunBackedn.Repositories.StreakRepo
                         Id = Guid.NewGuid(),
                         EndDate = streakUser.LastLessonDate,
                         StartDate = streakUser.LastLessonDate.AddDays(1 - streakUser.CurrentStreakCount),
-                        StreakLength = streakUser.CurrentStreakCount
+                        StreakLength = streakUser.CurrentStreakCount,
+                        UserId = UserId
                     };
                     _context.StreakHistory.Add(newStreakHistory);
                     // reset streak and reset startDate
@@ -70,7 +118,11 @@ namespace Math4FunBackedn.Repositories.StreakRepo
                     streakUser.LastLessonDate = dateCompleteLesson;
                     streakUser.StartLessonDate = dateCompleteLesson;
                     await _context.SaveChangesAsync();
-                    return streakUser;
+                    return new StreakUpdateReponse
+                    {
+                        IsContinueStreakUpdate = true,
+                        Streak = streakUser
+                    };
                 }
                 
             }
