@@ -62,7 +62,7 @@ namespace Math4FunBackedn.Repositories.LessonRepo
             return 1;
         }
 
-        public async Task<int> UpdateLessonByUser(UserUpdateLessonDTO iUpdate)
+        public async Task<StreakUpdateReponse> UpdateLessonByUser(UserUpdateLessonDTO iUpdate)
         {
             var user = await _context.User.Include(u => u.Users_Courses).ThenInclude(uc => uc.Course).ThenInclude(c => c.ChapterList).ThenInclude(chapter => chapter.LessonList).FirstOrDefaultAsync(u => u.Id == iUpdate.UserId);
             var userCourse = user.Users_Courses.FirstOrDefault(uc => uc.CourseId == iUpdate.CourseId);
@@ -92,12 +92,9 @@ namespace Math4FunBackedn.Repositories.LessonRepo
             lesson.Status = iUpdate.Status;
             user.TotalExp += expPlus;
             // If complete lesson => update streak
-            if(iUpdate.Status == true)
-            {
-                await _streakRepository.UpdateStreak(DateTime.Now, iUpdate.UserId);
-            }
+            var responseUpdateStreak = await _streakRepository.UpdateStreak(DateTime.Now, iUpdate.UserId);
             await _context.SaveChangesAsync();
-            return 1;
+            return responseUpdateStreak;
         }
     }
 }

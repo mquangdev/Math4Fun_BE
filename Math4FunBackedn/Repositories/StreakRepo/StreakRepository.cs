@@ -59,6 +59,11 @@ namespace Math4FunBackedn.Repositories.StreakRepo
         public async Task<StreakUpdateReponse> UpdateStreak(DateTime dateCompleteLesson, Guid UserId)
         {
             var streakUser = _context.Streak.FirstOrDefault(s => s.UserId == UserId);
+            var user = _context.User.FirstOrDefault(u => u.Id == UserId);
+            if(user == null)
+            {
+                throw new Exception("Không tìm thấy người dùng này");
+            }
             // If does not exist any streak of this user -> create new record
             if(streakUser == null)
             {
@@ -68,7 +73,8 @@ namespace Math4FunBackedn.Repositories.StreakRepo
                     UserId = UserId,
                     CurrentStreakCount = 1,
                     LastLessonDate = dateCompleteLesson,
-                    StartLessonDate = dateCompleteLesson
+                    StartLessonDate = dateCompleteLesson,
+                    User = user
                 };
                 _context.Streak.Add(streak);
                 await _context.SaveChangesAsync();
@@ -82,7 +88,7 @@ namespace Math4FunBackedn.Repositories.StreakRepo
             else
             {
                 // already complete lesson today
-                if(streakUser.LastLessonDate.Date == dateCompleteLesson.Date)
+                if((streakUser.LastLessonDate.Date == dateCompleteLesson.Date) && (streakUser.LastLessonDate.Month == dateCompleteLesson.Month) && (streakUser.LastLessonDate.Year == dateCompleteLesson.Year))
                 {
                     return new StreakUpdateReponse
                     {
@@ -91,7 +97,7 @@ namespace Math4FunBackedn.Repositories.StreakRepo
                     };
                 }
                 // finish the lesson yesterday
-                else if(streakUser.LastLessonDate.Date == dateCompleteLesson.AddDays(-1).Date)
+                else if((streakUser.LastLessonDate.Date == dateCompleteLesson.AddDays(-1).Date) && (streakUser.LastLessonDate.Month == dateCompleteLesson.Month) && (streakUser.LastLessonDate.Year == dateCompleteLesson.Year))
                 {
                     streakUser.CurrentStreakCount++;
                     streakUser.LastLessonDate = dateCompleteLesson;
@@ -110,7 +116,8 @@ namespace Math4FunBackedn.Repositories.StreakRepo
                         EndDate = streakUser.LastLessonDate,
                         StartDate = streakUser.LastLessonDate.AddDays(1 - streakUser.CurrentStreakCount),
                         StreakLength = streakUser.CurrentStreakCount,
-                        UserId = UserId
+                        UserId = UserId,
+                        User = user
                     };
                     _context.StreakHistory.Add(newStreakHistory);
                     // reset streak and reset startDate

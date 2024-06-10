@@ -136,7 +136,7 @@ namespace Math4FunBackedn.Controllers
             {
                 string authorizationHeader = Request.Headers["Authorization"];
                 Guid userId = await _tokenRepo.DecodeToken(authorizationHeader);
-                return Ok(await _friendRepo.UnFollowFromBoth(friendId, userId));
+                return Ok(await _friendRepo.UnFollowFromBoth    (friendId, userId));
             }
             catch (Exception ex)
             {
