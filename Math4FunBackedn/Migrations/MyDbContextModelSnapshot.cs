@@ -143,6 +143,8 @@ namespace Math4FunBackedn.Migrations
 
                     b.HasIndex("FriendId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Friend");
                 });
 
@@ -360,7 +362,15 @@ namespace Math4FunBackedn.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Math4FunBackedn.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Friend");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Math4FunBackedn.Entities.Lesson", b =>
